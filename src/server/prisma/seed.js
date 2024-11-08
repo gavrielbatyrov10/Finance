@@ -10,16 +10,28 @@ const seed = async () => {
     create: {
       username: "foo",
       password: "bar",
-      tasks: {
+      posts: {
         create: [
-          { description: "task 1" },
-          { description: "task 2" },
-          { description: "task 3" },
+          { 
+            title: "Post 1", 
+            content: "Content for post 1", 
+            imageUrl: "https://example.com/image1.jpg" 
+          },
+          { 
+            title: "Post 2", 
+            content: "Content for post 2", 
+            imageUrl: "https://example.com/image2.jpg" 
+          },
+          { 
+            title: "Post 3", 
+            content: "Content for post 3" // no imageUrl for this post
+          },
         ],
       },
     },
   });
 };
+
 
 seed()
   .then(async () => await prisma.$disconnect())
