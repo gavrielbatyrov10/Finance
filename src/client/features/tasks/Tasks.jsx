@@ -21,7 +21,7 @@ export default function Tasks() {
       <h2>Add New Task</h2>
       <NewTask />
       <h2>Your Tasks</h2>
-      {isLoading && <p>Loading tasks...</p>}
+      {isLoading && <p className="loader"></p>}
       {tasks && (
         <ul>
           {tasks.map((task) => (
