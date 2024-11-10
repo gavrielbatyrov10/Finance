@@ -15,6 +15,7 @@ model User {
   username String  @unique
   password String
   posts    Post[]  @relation("UserPosts")
+  task Task[]
 }
 
 model Post {
@@ -28,6 +29,14 @@ model Post {
   user      User      @relation("UserPosts", fields: [userId], references: [id])
 }
 
-
+model Task {
+  id        Int      @id @default(autoincrement())
+  title     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  completed Boolean  @default(false)
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+}
 
 
