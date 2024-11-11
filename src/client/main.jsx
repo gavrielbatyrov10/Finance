@@ -11,6 +11,7 @@ import Tasks from "./features/tasks/Tasks";
 import Root from "./layout/Root.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Realestate from "./features/marketInfo/realestate.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Tasks /> },
       { path: "/tasks", element: <Tasks /> },
+      { path: "/realestate", element: <Realestate /> },
       { path: "/login", element: <AuthForm /> },
     ],
   },

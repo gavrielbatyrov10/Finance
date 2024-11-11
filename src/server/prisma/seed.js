@@ -1,24 +1,31 @@
 const prisma = require("../prisma");
+const bcrypt = require("bcrypt");
 
-/** Seeds the database with a user and some tasks */
 const seed = async () => {
-  await prisma.user.upsert({
-    where: {
-      username: "foo",
-    },
-    update: {},
-    create: {
-      username: "foo",
-      password: "bar",
-      tasks: {
-        create: [
-          { description: "task 1" },
-          { description: "task 2" },
-          { description: "task 3" },
-        ],
+  for (let i = 0; i < 10; i++) {
+    // Hash password for each user
+    const hashedPassword = await bcrypt.hash(`password${i}`, 10);
+
+    const user = await prisma.user.upsert({
+      where: { email: `loch${i}@loch.com` },
+      update: {},
+      create: {
+        email: `loch${i}@loch.com`,
+        username: `user${i}`,  // Added username
+        password: hashedPassword,  // Add hashed password
+        // Add name or other fields if needed
       },
-    },
-  });
+    });
+
+    await prisma.task.create({
+      data: {
+        title: `Task title ${i}`,
+        userId: user.id, // Associate the task with the user
+      },
+    });
+  }
+
+  console.log(`Database has been seeded. 🌱`);
 };
 
 seed()

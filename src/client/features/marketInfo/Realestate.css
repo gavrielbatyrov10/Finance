@@ -1,0 +1,44 @@
+.partnersOne_container {
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+    opacity: 1;
+    animation-name: partnersOne_fadeIn;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.7, 0, 0.84, 0);
+    animation-duration: 1.67s;
+    padding: 44px 0;
+    overflow: hidden; /* Hide overflow to make the scroll seamless */
+}
+
+.partnersOne_logoTrack__BKaJ4 {
+    display: flex;
+    width: calc(var(--logo-width, 300px) * 10); /* Adjust based on the number of logos */
+    animation: partnersOne_moveRightToLeft linear infinite;
+    animation-duration: 60s;
+}
+
+.partnersOne_logoContainer__zL7xh {
+    width: var(--logo-width, 300px);
+    display: flex;
+    justify-content: left;
+    padding-right: 80px;
+}
+
+@keyframes partnersOne_fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes partnersOne_moveRightToLeft {
+    from {
+        transform: translateX(100%); /* Start from the right */
+    }
+    to {
+        transform: translateX(-100%); /* Move completely to the left */
+    }
+}
