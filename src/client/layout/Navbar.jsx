@@ -2,10 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { logout, selectToken } from "../features/auth/authSlice";
 import "./Navbar.less";
-import { MdOutlineKeyboardDoubleArrowLeft, GrLogout  } from "react-icons/md";
+import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
+import { GrLogout } from "react-icons/gr"; // Corrected import
 
 /**
- * A simple navigation bar that displays "Log In" if the user is not logged in,
+ * A navigation bar that displays "Log In" if the user is not logged in,
  * and "Log Out" if the user is logged in.
  */
 export default function Navbar() {
@@ -25,36 +26,31 @@ export default function Navbar() {
           <NavLink to="/" className="nav-link">
             <span className="link-text logo-text">Menu</span>
             <MdOutlineKeyboardDoubleArrowLeft />
-
           </NavLink>
         </li>
 
         <li className="nav-item">
           <NavLink to="/cats" className="nav-link">
-          <MdOutlineKeyboardDoubleArrowLeft />
-
+            <MdOutlineKeyboardDoubleArrowLeft />
             <span className="link-text">Cats</span>
           </NavLink>
         </li>
 
         <li className="nav-item">
           <NavLink to="/aliens" className="nav-link">
-          <MdOutlineKeyboardDoubleArrowLeft />
-
+            <MdOutlineKeyboardDoubleArrowLeft />
             <span className="link-text">Aliens</span>
           </NavLink>
         </li>
 
         <li className="nav-item">
           <NavLink to="/space" className="nav-link">
-            {/* SVG Icon */}
             <span className="link-text">Space</span>
           </NavLink>
         </li>
 
         <li className="nav-item">
           <NavLink to="/shuttle" className="nav-link">
-            {/* SVG Icon */}
             <span className="link-text">Shuttle</span>
           </NavLink>
         </li>
@@ -63,7 +59,6 @@ export default function Navbar() {
           {token ? (
             <a onClick={handleLogout} className="nav-link">
               <GrLogout />
-
               <span className="link-text">Log Out</span>
             </a>
           ) : (
