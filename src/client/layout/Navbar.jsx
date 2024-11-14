@@ -1,84 +1,106 @@
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
-import { logout, selectToken } from "../features/auth/authSlice";
-import "./Navbar.less";
-import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
-import { GrLogout } from "react-icons/gr";
-import { FaChartLine, FaCity, FaDollarSign, FaEllipsisH, FaSignInAlt, FaHome } from "react-icons/fa"; // Updated icons
+// import { useDispatch, useSelector } from "react-redux";
+// import { NavLink, useNavigate } from "react-router-dom";
+// import { logout, selectToken } from "../features/auth/authSlice";
+// import "./Navbar.less";
+// import { useState } from "react";
 
-/**
- * A navigation bar that displays "Log In" if the user is not logged in,
- * and "Log Out" if the user is logged in.
- */
+// export default function Navbar() {
+//   const dispatch = useDispatch();
+//   const navigate = useNavigate();
+//   const token = useSelector(selectToken);
+//   const [isCurtainOpen, setIsCurtainOpen] = useState(false);
+
+//   const handleLogout = async () => {
+//     await dispatch(logout());
+//     navigate("/");
+//   };
+
+//   const toggleCurtain = () => setIsCurtainOpen(!isCurtainOpen);
+
+//   return (
+//     <nav className="navbar">
+//       <div className="navbar-content">
+//         <NavLink to="/" className="logo">Home</NavLink>
+
+//         {/* Regular nav links for desktop */}
+//         <div className="nav-links">
+//           <NavLink to="/news">News</NavLink>
+//           <div className="dropdown">
+//             <button className="dropbtn">More Links</button>
+//             <div className="dropdown-content">
+//               <NavLink to="/link1">Link 1</NavLink>
+//               <NavLink to="/link2">Link 2</NavLink>
+//               <NavLink to="/link3">Link 3</NavLink>
+//             </div>
+//           </div>
+//           <div className="dropdown">
+//             <button className="dropbtn">Additional Links</button>
+//             <div className="dropdown-content">
+//               <NavLink to="/additional1">Additional Link 1</NavLink>
+//               <NavLink to="/additional2">Additional Link 2</NavLink>
+//               <NavLink to="/additional3">Additional Link 3</NavLink>
+//             </div>
+//           </div>
+//           <div className="auth-link">
+//             {token ? (
+//               <button onClick={handleLogout}>Log Out</button>
+//             ) : (
+//               <NavLink to="/login">Log In</NavLink>
+//             )}
+//           </div>
+//         </div>
+
+//         {/* Hamburger icon for curtain menu on mobile */}
+//         <button className="hamburger" onClick={toggleCurtain}>
+//           &#9776;
+//         </button>
+//       </div>
+
+//       {/* Curtain menu */}
+//       {isCurtainOpen && (
+//         <div className="curtain">
+//           <button className="closebtn" onClick={toggleCurtain}>&times;</button>
+//           <div className="curtain-content">
+//             <NavLink onClick={toggleCurtain} to="/">Home</NavLink>
+//             <NavLink onClick={toggleCurtain} to="/news">News</NavLink>
+//             <NavLink onClick={toggleCurtain} to="/link1">Link 1</NavLink>
+//             <NavLink onClick={toggleCurtain} to="/link2">Link 2</NavLink>
+//             <NavLink onClick={toggleCurtain} to="/link3">Link 3</NavLink>
+//             <NavLink onClick={toggleCurtain} to="/additional1">Additional Link 1</NavLink>
+//             <NavLink onClick={toggleCurtain} to="/additional2">Additional Link 2</NavLink>
+//             <NavLink onClick={toggleCurtain} to="/additional3">Additional Link 3</NavLink>
+//             {token ? (
+//               <button onClick={handleLogout}>Log Out</button>
+//             ) : (
+//               <NavLink onClick={toggleCurtain} to="/login">Log In</NavLink>
+//             )}
+//           </div>
+//         </div>
+//       )}
+//     </nav>
+//   );
+// }
+import React, { useState } from 'react';
+ import "./Navbar.less";
+
+
 export default function Navbar() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const token = useSelector(selectToken);
-
-  const handleLogout = async () => {
-    await dispatch(logout());
-    navigate("/");
-  };
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="navbar">
-      <ul className="navbar-nav">
-        <li className="logo">
-          <NavLink to="/" className="nav-link">
-            <span className="link-text logo-text">Menu</span>
-            <MdOutlineKeyboardDoubleArrowLeft />
-          </NavLink>
-        </li>
-
-        <li className="nav-item">
-          <NavLink to="/" className="nav-link">
-            <FaHome /> {/* Icon for Home */}
-            <span className="link-text">Home</span>
-          </NavLink>
-        </li>
-
-        <li className="nav-item">
-          <NavLink to="/cats" className="nav-link">
-            <FaChartLine /> {/* Icon for Stocks */}
-            <span className="link-text">Stocks</span>
-          </NavLink>
-        </li>
-
-        <li className="nav-item">
-          <NavLink to="/aliens" className="nav-link">
-            <FaCity /> {/* Icon for Real Estate */}
-            <span className="link-text">Real Estate</span>
-          </NavLink>
-        </li>
-
-        <li className="nav-item">
-          <NavLink to="/space" className="nav-link">
-            <FaDollarSign /> {/* Icon for Currency */}
-            <span className="link-text">Currency</span>
-          </NavLink>
-        </li>
-
-        <li className="nav-item">
-          <NavLink to="/shuttle" className="nav-link">
-            <FaEllipsisH /> {/* Icon for More */}
-            <span className="link-text">More</span>
-          </NavLink>
-        </li>
-
-        <li className="nav-item">
-          {token ? (
-            <a onClick={handleLogout} className="nav-link">
-              <GrLogout /> {/* Icon for Log Out */}
-              <span className="link-text">Log Out</span>
-            </a>
-          ) : (
-            <NavLink to="/login" className="nav-link">
-              <FaSignInAlt /> {/* Icon for Log In */}
-              <span className="link-text">Log In</span>
-            </NavLink>
-          )}
-        </li>
-      </ul>
-    </nav>
+    <>
+      <div className="hamburger" onClick={() => setIsOpen(!isOpen)}>
+        <div className={isOpen ? 'bar open' : 'bar'}></div>
+        <div className={isOpen ? 'bar open' : 'bar'}></div>
+        <div className={isOpen ? 'bar open' : 'bar'}></div>
+      </div>
+      
+      <div className={`menu ${isOpen ? 'open' : ''}`}>
+        <a href="#home" onClick={() => setIsOpen(false)}>Home</a>
+        <a href="#about" onClick={() => setIsOpen(false)}>About</a>
+        <a href="#services" onClick={() => setIsOpen(false)}>Services</a>
+        <a href="#contact" onClick={() => setIsOpen(false)}>Contact</a>
+      </div>
+    </>
   );
-}
+};
