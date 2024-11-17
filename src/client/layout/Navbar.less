@@ -1,46 +1,241 @@
-/* Hamburger icon styling */
-.hamburger {
-  cursor: pointer;
+// General Styles
+
+
+// #0e1f3e
+
+
+.navbar {
   display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  width: 2rem;
-}
-
-.bar {
-  
-  width: 3;
-  height: .3rem;
-  background: #ff0000;
-  transition: 0.4s;
-  z-index: 2;
-}
-
-/* Open state transforms */
-.bar.open:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.bar.open:nth-child(2) { opacity: 0; }
-.bar.open:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-/* Menu styling */
-.menu {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100vh;
-  background: #333;
-  display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  transition: left 0.3s;
+  background-color: #2c3e50; /* Darker background for a more modern look */
+  padding: 15px;
+  position: relative;
+  animation: navbarSlideIn 1s ease-in-out;
 }
 
-.menu.open { left: 0; }
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ecf0f1; /* Lighter color for contrast */
+  transition: transform 0.3s ease;
+}
 
-.menu a {
-  color: white;
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  animation: menuFadeIn 1.5s ease-out;
+}
+
+.menu-item {
   text-decoration: none;
-  margin: 15px 0;
-  font-size: 2.5rem;
+  color: #ecf0f1; /* Lighter color for better contrast */
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.menu-item:hover {
+  background-color: #3498db; /* Blue hover effect */
+  color: #fff;
+  border-radius: 5px;
+  transform: translateY(-3px);
+}
+
+.menu-item:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: #3498db;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.menu-item:hover:before {
+  width: 100%;
+  left: 0;
+}
+
+.logout-btn {
+  // background-color: #e74c3c;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.logout-btn:hover {
+  // background-color: #c0392b;
+  transform: scale(1.1);
+}
+
+.login-link {
+  background-color: #3498db;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-link:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+// Mobile Menu (Hamburger)
+.hamburger {
+  display: none;
+  font-size: 30px;
+  color: #ecf0f1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: rotate(90deg);
+}
+
+.menu.open {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #2c3e50;
+  padding: 15px;
+  z-index: 10;
+  animation: slideDown 0.5s ease-in-out;
+}
+
+.menu-item {
+  display: block;
+  padding: 15px;
+  font-size: 18px;
+}
+
+// Dropdown menu styles (Hover Effect)
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none; /* Hide by default */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #2c3e50; /* Matching background */
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 9999; /* Ensure it's on top */
+  opacity: 0;
+
+}
+
+@keyframes fadein {
+  0% {
+    transform: translateY(-350px);  /* Start off-screen */
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(-10);  /* Start off-screen */
+
+  }
+  100% {
+    transform: translateY(0);  /* Move to its original position */
+    opacity: 1;
+  }
+}
+
+
+.t {
+ width: 30px;
+ height: 30px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid rgb(255, 255, 255); /* Up Arrow */
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: block; /* Show on hover */
+  opacity: 1;
+  animation: fadein 0.3s ease-in-out;
+
+}
+
+.dropdown-item {
+  text-decoration: none;
+  color: #ecf0f1;
+  padding: 12px 16px;
+  display: block;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #3498db;
+  color: #fff;
+}
+
+// Keyframe Animations
+@keyframes navbarSlideIn {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes menuFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes itemHover {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
