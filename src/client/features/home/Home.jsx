@@ -1,7 +1,10 @@
 import React from 'react'
+import "./Home.less"
 
 export default function Home() {
   return (
-    <div>Home</div>
+   <section id='home'>
+    <h1>home</h1>
+   </section>
   )
 }
