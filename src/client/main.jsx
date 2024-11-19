@@ -11,15 +11,13 @@ import Root from "./layout/Root.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Realestate from "./features/marketInfo/realestate.jsx";
-import Fullimg from "./features/home/Fullimg.jsx";
 import Home from "./features/home/Home.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     children: [
-      { path: "/", element: <Fullimg /> },
-      { path: "/home", element: <Home /> },
+      { path: "/", element: <Home /> },
       { path: "/realestate", element: <Realestate /> },
       { path: "/login", element: <AuthForm /> },
     ],

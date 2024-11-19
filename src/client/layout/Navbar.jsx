@@ -4,8 +4,7 @@ import { logout, selectToken } from "../features/auth/authSlice";
 import { useState } from "react";
 import "./Navbar.less";
 
-import {  FaArrowDown } from 'react-icons/fa'; // Importing arrow icons
-
+import { FaArrowDown } from 'react-icons/fa'; // Importing arrow icons
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -34,7 +33,7 @@ export default function Navbar() {
 
         {/* About Dropdown menu */}
         <div className="dropdown">
-          <NavLink to="/about" className="menu-item">About         <FaArrowDown />     </NavLink>
+          <NavLink to="/about" className="menu-item">About <FaArrowDown /></NavLink>
           <div className="dropdown-content">
             <NavLink to="/team" className="dropdown-item">Team</NavLink>
             <NavLink to="/careers" className="dropdown-item">Careers</NavLink>
@@ -44,8 +43,7 @@ export default function Navbar() {
 
         {/* Services Dropdown menu */}
         <div className="dropdown">
-          <NavLink to="/services" className="menu-item">Services      <FaArrowDown />     {/* Up Arrow */}
-          </NavLink>
+          <NavLink to="/services" className="menu-item">Services <FaArrowDown /></NavLink>
           <div className="dropdown-content">
             <NavLink to="/web-design" className="dropdown-item">Web Design</NavLink>
             <NavLink to="/development" className="dropdown-item">Development</NavLink>
@@ -71,10 +69,9 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="mobile-menu">
-          <NavLink to="/" className="menu-item" onClick={toggleMobileMenu}>Home 
-          </NavLink>
+          <NavLink to="/" className="menu-item" onClick={toggleMobileMenu}>Home</NavLink>
           <NavLink to="/about" className="menu-item" onClick={toggleMobileMenu}>About</NavLink>
-          <NavLink to="/services" className="menu-item" onClick={toggleMobileMenu}>Services  &larr;</NavLink>
+          <NavLink to="/services" className="menu-item" onClick={toggleMobileMenu}>Services</NavLink>
           <NavLink to="/contact" className="menu-item" onClick={toggleMobileMenu}>Contact</NavLink>
 
           {/* Login/Logout in mobile menu */}
