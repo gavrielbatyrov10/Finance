@@ -185,7 +185,7 @@
 }
 
 .dropdown-item:hover {
-  background-color: #3498db;
+  background-color: #7297c5;
   color: #fff;
 }
 
@@ -259,19 +259,22 @@
   .menu {
     display: none;
   }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   /* Show the hamburger menu on smaller screens */
   .hamburger {
-    display: block;
-    font-size: 30px;
-    color: #ecf0f1;
-    background: none;
-    border: none;
+    display: flex;
+    align-items: center;
+    color: #000000f2;
+    justify-content: space-between;
+
     cursor: pointer;
     transition: transform 0.3s ease;
-    position: absolute;
-    top: 20px; /* Adjust if needed */
-    right: 20px; /* Adjust if needed */
+
   }
 
   .hamburger:hover {
@@ -285,10 +288,11 @@
     top: 60px; /* Adjust if needed */
     left: 0;
     right: 0;
-    background-color: #2c3e50;
+    background-color: #7297c5;
     padding: 15px;
     z-index: 10;
     animation: slideDown 0.5s ease-in-out;
+    color: #000000f2;
   }
 
   .mobile-menu .menu-item {
